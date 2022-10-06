@@ -4,7 +4,7 @@ from prometheus_client import start_http_server
 from schedule import every, run_pending
 from time import sleep
 
-PROMETHEUS_PORT = 6334
+PROMETHEUS_PORT = 3622
 
 
 def main():
