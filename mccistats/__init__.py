@@ -21,6 +21,7 @@ def server_status(pool):
         LATENCY.labels(proxy=addr).set(latency)
         AVAILABLE.labels(proxy=addr).set(1)
       else:
+        LATENCY.labels(proxy=addr).set(0)
         AVAILABLE.labels(proxy=addr).set(0)
   except Exception as e:
     import traceback
