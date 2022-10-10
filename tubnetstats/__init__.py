@@ -3,9 +3,9 @@ from tubnetstats.ping import proxy_status, ServerStatus
 from tubnetstats.metrics import AVAILABLE, LATENCY, PLAYERS_MAX, PLAYERS_ONLINE
 
 
-def server_status():
+def server_status(pool):
   try:
-    statuses = [proxy_status(ADDRESSES[0])]
+    statuses = pool.map(proxy_status, ADDRESSES)
 
     overall = ServerStatus(
       players_online=max(map(lambda p: p.players_online, statuses)),
