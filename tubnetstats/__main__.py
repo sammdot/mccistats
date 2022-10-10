@@ -10,9 +10,8 @@ PROMETHEUS_PORT = 3688
 def main():
   start_http_server(PROMETHEUS_PORT)
 
-  pool = Pool(processes=3)
-  server_status(pool)
-  every(10).seconds.do(server_status, pool)
+  server_status()
+  every(10).seconds.do(server_status)
 
   while True:
     run_pending()
