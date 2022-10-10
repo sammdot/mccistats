@@ -5,7 +5,8 @@ description = ""
 authors = ["Sammi de Guzman <sammi@sammdot.ca>"]
 readme = "README.md"
 packages = [
-  {include = "mccistats"}
+  {include = "mccistats"},
+  {include = "tubnetstats"}
 ]
 
 [tool.poetry.dependencies]
