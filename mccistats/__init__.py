@@ -13,7 +13,7 @@ def server_status(pool):
       latencies={addr: p.latency_ms for addr, p in zip(ADDRESSES, statuses)},
     )
 
-    if overall.players_online:
+    if overall.players_max > 0:
       PLAYERS_ONLINE.set(overall.players_online)
       PLAYERS_MAX.set(overall.players_max)
 
@@ -22,8 +22,7 @@ def server_status(pool):
         LATENCY.labels(proxy=addr).set(latency)
         AVAILABLE.labels(proxy=addr).set(1)
       else:
-        LATENCY.remove(addr)
-        AVAILABLE.remove(addr)
+        AVAILABLE.labels(proxy=addr).set(0)
   except Exception as e:
     import traceback
 
